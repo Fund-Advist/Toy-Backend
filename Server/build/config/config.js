@@ -28,10 +28,8 @@ const MONGO = {
     url: `mongodb+srv://${mongo_user}:${mongo_pass}@${mongo_host}`
 };
 const server_host = process.env.SERVER_HOSTNAME;
-const server_port = process.env.PORT || 5000;
 const SERVER = {
-    hostname: server_host,
-    port: server_port
+    hostname: server_host
 };
 const config = {
     mongo: MONGO,

@@ -43,5 +43,5 @@ app.use((req, res, next) => {
         message: error.message
     });
 });
-app.listen(config_1.default.server.port, () => console.log("start"));
+app.listen(process.env.PORT || 5000, () => console.log("start"));
 //# sourceMappingURL=index.js.map

@@ -48,4 +48,4 @@ app.use((req : express.Request , res : express.Response, next : express.NextFunc
        });
 });
 
-app.listen(config.server.port,()=>console.log("start"));
+app.listen(process.env.PORT || 5000,()=>console.log("start"));

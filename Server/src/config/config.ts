@@ -27,11 +27,10 @@ const MONGO = {
 };
 
 const server_host = process.env.SERVER_HOSTNAME;
-const server_port = process.env.PORT || 5000;
+
 
 const SERVER = {
-    hostname : server_host,
-    port : server_port
+    hostname : server_host
 };
 
 const config = {
