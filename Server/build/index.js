@@ -43,5 +43,6 @@ app.use((req, res, next) => {
         message: error.message
     });
 });
-app.listen(process.env.PORT || 5000, () => console.log("start"));
+const port = process.env.PORT || 5000;
+app.listen(port, () => console.log("start" + port));
 //# sourceMappingURL=index.js.map

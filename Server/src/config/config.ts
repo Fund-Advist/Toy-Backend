@@ -1,13 +1,21 @@
 // 다른 파일 어디서든 그 값이 들어간 변수 사용 가능!
 // 보안..?
 import dotenv from 'dotenv';
+import _ from 'lodash';
+// Set the NODE_ENV to 'development' by default
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 const envFound = dotenv.config();
 
-if (envFound.error) {
-    // This error should crash whole process
-    throw envFound.error;
+let config;
+
+if (!('error' in envFound)) {
+    config = envFound.parsed;
+  } else {
+    config = {};
+    _.each(process.env, (value, key) => config[key] = value);
   }
+  
 
 const mongo_user = process.env.MONGO_USERNAME;
 const mongo_pass = process.env.MONGO_PASSWORD;
@@ -33,7 +41,7 @@ const SERVER = {
     hostname : server_host
 };
 
-const config = {
+config = {
     mongo : MONGO,
     server : SERVER
 };

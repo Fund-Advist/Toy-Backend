@@ -6,10 +6,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // 다른 파일 어디서든 그 값이 들어간 변수 사용 가능!
 // 보안..?
 const dotenv_1 = __importDefault(require("dotenv"));
+const lodash_1 = __importDefault(require("lodash"));
+// Set the NODE_ENV to 'development' by default
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 const envFound = dotenv_1.default.config();
-if (envFound.error) {
-    // This error should crash whole process
-    throw envFound.error;
+let config;
+if (!('error' in envFound)) {
+    config = envFound.parsed;
+}
+else {
+    config = {};
+    lodash_1.default.each(process.env, (value, key) => config[key] = value);
 }
 const mongo_user = process.env.MONGO_USERNAME;
 const mongo_pass = process.env.MONGO_PASSWORD;
@@ -31,7 +38,7 @@ const server_host = process.env.SERVER_HOSTNAME;
 const SERVER = {
     hostname: server_host
 };
-const config = {
+config = {
     mongo: MONGO,
     server: SERVER
 };

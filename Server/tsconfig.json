@@ -72,7 +72,7 @@
   },
   // 어디에 있는 파일 컴파일?
   "include": [
-    "src/**/*", "build/index.js" ],
+    "src/**/*"],
   // 어디에 있는 파일 제외?
   "exclude": [
     "node_modules"
